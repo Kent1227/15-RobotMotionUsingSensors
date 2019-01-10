@@ -164,6 +164,15 @@ class SimpleRoseBot(object):
                 break
         self.stop()
 
+    def go_straight_for_inches(self, inches, speed):
+        self.go(speed, speed)
+        inches_travelled = 0
+        while True:
+            inches_travelled = inches_travelled + (self.lMotor.get_position() * Motor.WheelCircumference)
+            if inches_travelled >= inches:
+                break
+        self.stop()
+
 
 ###############################################################################
 # The  Motor   and   ColorSensor classes.  USE them, but do NOT modify them.
